@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:25:04 by asene             #+#    #+#             */
-/*   Updated: 2024/11/08 14:37:31 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/09 13:31:50 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-
 char	*get_next_line(int	fd);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *s, int c);
+char	*ft_substr(char const *str, unsigned int start, size_t len);
 
 #endif
