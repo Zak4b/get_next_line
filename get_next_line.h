@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:25:04 by asene             #+#    #+#             */
-/*   Updated: 2024/11/09 14:43:46 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/09 16:14:43 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *str, unsigned int start, size_t len);
 char	*ft_strdup(const char *src);
+void	*ft_calloc(size_t count, size_t element_size);
 
 #endif

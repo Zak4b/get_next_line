@@ -6,33 +6,34 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:24:40 by asene             #+#    #+#             */
-/*   Updated: 2024/11/09 15:39:08 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/09 16:14:27 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	*replace_pointer(void **dest, void *new)
+static void	replace_pointer(void **dest, void *new)
 {
-	void *temp;
+    void	*temp;
 
 	temp = *dest;
 	*dest = new;
-	free(temp);
+	if (temp)
+		free(temp);
 }
 
 static char *join_and_free(char **buffer, char *new_content)
 {
-	char *temp;
+	char	*temp;
 
-	if (buffer)
+	if (buffer && *buffer)
 	{
 		temp = ft_strjoin(*buffer, new_content);
 		free(*buffer);
-		*buffer = temp;
 	}
 	else
-		*buffer = new_content;
+		temp = ft_strdup(new_content);
+	*buffer = temp;
 	return (*buffer);
 }
 
@@ -66,7 +67,7 @@ char	*get_next_line(int	fd)
 	if (file_end)
 		return NULL;
 	if (buffer == NULL)
-		buffer = malloc(BUFFER_SIZE + 1);
+		buffer = ft_calloc(BUFFER_SIZE + 1, 1);
 	eol = ft_strchr(buffer, '\n');
 	if (eol == NULL)
 		read_file_to_next_line(fd, &buffer, &eol);
