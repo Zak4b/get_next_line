@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:25:01 by asene             #+#    #+#             */
-/*   Updated: 2024/11/09 14:02:56 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/09 14:43:38 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,24 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 	while (i < len && (str + start)[i])
 	{
 		dup[i] = (str + start)[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
+
+char	*ft_strdup(const char *src)
+{
+	int		i;
+	char	*dup;
+
+	dup = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (dup == NULL)
+		return (NULL);
+	i = 0;
+	while (src[i])
+	{
+		dup[i] = src[i];
 		i++;
 	}
 	dup[i] = '\0';
