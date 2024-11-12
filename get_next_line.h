@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:25:04 by asene             #+#    #+#             */
-/*   Updated: 2024/11/09 16:14:43 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/12 10:45:06 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define GET_NEXT_LINE_H
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
+# endif
+# if BUFFER_SIZE < 1
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# elif BUFFER_SIZE > 1000000
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 1000000
 # endif
 
 #include <unistd.h>
