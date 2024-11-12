@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:25:04 by asene             #+#    #+#             */
-/*   Updated: 2024/11/12 10:45:06 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/12 17:41:06 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@
 #include <stdlib.h>
 
 char	*get_next_line(int	fd);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_join_and_free(char **s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *str, unsigned int start, size_t len);
 char	*ft_strdup(const char *src);
-void	*ft_calloc(size_t count, size_t element_size);
+size_t	ft_strlen(const char *s);
 
 #endif

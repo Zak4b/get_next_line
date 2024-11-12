@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:25:01 by asene             #+#    #+#             */
-/*   Updated: 2024/11/09 16:17:17 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/12 16:22:03 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	*ft_calloc(size_t count, size_t element_size)
 }
 char	*ft_strchr(const char *s, int c)
 {
+	if (s == NULL)
+		return (NULL);
 	while (*s && *s != (char)c)
 		s++;
 	if (*s == (char)c)
@@ -48,28 +50,29 @@ size_t	ft_strlen(const char *s)
 	return (count);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_join_and_free(char **s1, char const *s2)
 {
 	char	*new_str;
 	int		i;
 
-	new_str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	new_str = malloc(sizeof(char) * (ft_strlen(*s1) + ft_strlen(s2) + 1));
 	if (new_str == NULL)
 		return (NULL);
 	i = 0;
-	while (*s1)
-		new_str[i++] = *(s1++);
+	while (**s1)
+		new_str[i++] = *(*s1++);
 	while (*s2)
 		new_str[i++] = *(s2++);
 	new_str[i] = '\0';
+	free(*s1);
 	return (new_str);
 }
 
 char	*ft_substr(char const *str, unsigned int start, size_t len)
 {
-	size_t	src_len;
-	int		i;
-	char	*dup;
+	size_t			src_len;
+	unsigned int	i;
+	char			*dup;
 
 	src_len = ft_strlen(str);
 	if (start >= src_len)
