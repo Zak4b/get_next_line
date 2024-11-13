@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:24:40 by asene             #+#    #+#             */
-/*   Updated: 2024/11/12 17:45:42 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/13 11:12:16 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,9 @@ static void	replace_pointer(char **buffer, size_t eol_index)
 {
     char	*temp;
 
-	if (eol_index == -1)
-		**buffer = '\0';
-	else
-	{
-		temp = *buffer;
-		*buffer = ft_strdup(*buffer + eol_index + 1);
-		free(temp);
-	}
+	temp = *buffer;
+	*buffer = ft_strdup(*buffer + eol_index + 1);
+	free(temp);
 }
 
 static size_t	read_file_to_next_line(int fd, char **buffer)
@@ -48,11 +43,8 @@ static size_t	read_file_to_next_line(int fd, char **buffer)
 		eol = ft_strchr(*buffer, '\n');
 	}
 	if (bytes_read == 0)
-		eol = *buffer + ft_strlen(*buffer);
-	if (eol)
-		return (eol - *buffer);
-	else
-		return (-1);
+		eol = *buffer + ft_strlen(*buffer) - 1;
+	return (eol - *buffer);
 }
 
 char	*get_next_line(int	fd)
@@ -64,7 +56,7 @@ char	*get_next_line(int	fd)
 	if (fd < 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	eol = read_file_to_next_line(fd, &buffer);
-	if (eol >= 0 && buffer[eol + 1])
+	if (eol >= 0)
 	{
 		line = ft_substr(buffer, 0, eol + 1);
 		replace_pointer(&buffer, eol);
