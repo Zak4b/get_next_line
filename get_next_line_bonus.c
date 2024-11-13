@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 14:24:40 by asene             #+#    #+#             */
-/*   Updated: 2024/11/13 11:27:42 by asene            ###   ########.fr       */
+/*   Created: 2024/11/13 11:23:24 by asene             #+#    #+#             */
+/*   Updated: 2024/11/13 11:29:18 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,23 @@ static size_t	read_file_to_next_line(int fd, char **buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer = NULL;
+	static char	*buffer[_SC_OPEN_MAX] = {NULL};
 	char		*line;
 	int			eol;
 
 	if (fd < 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	eol = read_file_to_next_line(fd, &buffer);
+	eol = read_file_to_next_line(fd, &buffer[fd]);
 	if (eol >= 0)
 	{
-		line = ft_substr(buffer, 0, eol + 1);
-		replace_pointer(&buffer, eol);
+		line = ft_substr(buffer[fd], 0, eol + 1);
+		replace_pointer(&buffer[fd], eol);
 	}
 	else
 	{
 		line = NULL;
-		free(buffer);
-		buffer = NULL;
+		free(buffer[fd]);
+		buffer[fd] = NULL;
 	}
 	return (line);
 }
