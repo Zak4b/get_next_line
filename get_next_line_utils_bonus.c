@@ -6,11 +6,11 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 11:23:41 by asene             #+#    #+#             */
-/*   Updated: 2024/11/13 11:31:02 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/14 20:57:58 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include "stdint.h"
 
 char	*ft_strchr(const char *s, int c)

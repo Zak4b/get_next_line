@@ -6,11 +6,11 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 11:23:24 by asene             #+#    #+#             */
-/*   Updated: 2024/11/13 11:29:18 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/14 20:57:56 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void	replace_pointer(char **buffer, size_t eol_index)
 {
